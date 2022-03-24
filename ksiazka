@@ -78,7 +78,16 @@ public:
 
     void printAll()
     {
-        cout << "Ksiazka " << Title<< " napisana przez " << Name << " cena wynosi " << Price <<  " w magazynie jest " << Storage << " egzemlparzy" << endl;
+        cout << "Ksiazka ";
+            printT();
+            cout << " napisana przez ";
+            printN();
+            cout << " cena wynosi ";
+            printP();
+            cout << " w magazynie jest ";
+            printS();
+            cout << " egzemlparzy"<<endl;
+
     }
 };
 
