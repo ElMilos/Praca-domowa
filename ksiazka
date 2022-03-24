@@ -1,1 +1,86 @@
+#include <string>
+#include <iostream>
+#include <cctype>
+#include "other.h"
 
+using namespace std;
+
+
+int main()
+{
+    Book a("Pan Tadeusz", "adam mickiewicz", 6,9);
+
+    Book b("Krzyzacy", "Henryk sienkiewicz", 10);
+
+
+    a.printAll();
+
+    a.change_price();
+
+    a.change_storage();
+
+    a.printAll();
+
+}
+/--------------------------------------------
+#ifndef other_H
+#define other_H
+
+#include <string>
+#include <iostream>
+#include <cctype>
+
+
+using namespace std;
+
+class Book
+{
+private:
+    string Title;
+    string Name;
+    int Price;
+    int Storage;
+
+public:
+
+    Book(string title, string name, int price, int storage = 0) //construktor
+    {
+        Title = title;
+        Price = price;
+        Storage = storage;
+
+        int hold = name.size();
+        int white_space = 0;
+        char new_letter;
+
+        for (int i = 0; i < hold; i++)
+        {
+            if (white_space == 0)
+            {
+                new_letter = toupper(name[i]);
+                name[i] = new_letter;
+                white_space++;
+            }
+
+            if (name[i] == ' ') white_space--;
+        }
+        Name = name;
+
+    }
+
+    void printT() { cout << Title; }
+    void printN() { cout << Name; }
+    void printP() { cout << Price; }
+    void printS() { cout << Storage; }
+
+    void change_price() { cin >> Price; }
+    void change_storage() { cin >> Storage; }
+
+    void printAll()
+    {
+        cout << "Ksiazka " << Title<< " napisana przez " << Name << " cena wynosi " << Price <<  " w magazynie jest " << Storage << " egzemlparzy" << endl;
+    }
+};
+
+#endif
+/-------------------------------------- plik z clasa
